@@ -1,5 +1,5 @@
 {
-  "name": "SvelteComponent",
+  "name": "SvelteYoutube",
   "svelte": "src/index.svelte",
   "module": "index.mjs",
   "main": "index.js",
@@ -13,8 +13,14 @@
     "rollup-plugin-svelte": "^5.0.0",
     "svelte": "^3.0.0"
   },
+  "peerDependencies": {
+    "svelte": "^3.0.0"
+  },
   "keywords": [
-    "svelte"
+    "svelte",
+    "youtube",
+    "player",
+    "video"
   ],
   "files": [
     "src",
