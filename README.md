@@ -56,6 +56,12 @@ The `PlayerState` named export contains the values that are used by the [YouTube
 
 Refer to [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference#onError) for an explanation of the error codes used in the `on:error` event.
 
+## Controlling the player
+
+Each of the component's events contains a `target` property in the event's `detail` object.
+This property contains a reference to the underlying player instance.
+Once you have an instance of the player object, you may call any of the [available functions](https://developers.google.com/youtube/iframe_api_reference#Functions) on it.
+
 ## Example
 
 ```js
@@ -79,15 +85,6 @@ Refer to [YouTube IFrame Player API](https://developers.google.com/youtube/ifram
 
 <YouTube videoId="2g811Eo7K8U" {options} on:ready={onReady} />
 ```
-
-## Controlling the player
-
-You can access & control the player in a way similar to the [official api](https://developers.google.com/youtube/iframe_api_reference#Events):
-
-> The ~~API~~ *component* will pass an event object as the sole argument to each of ~~those functions~~ *the event handler props*. The event object has the following properties:
-
-> * The event's `target` identifies the video player that corresponds to the event.
-> * The event's `data` specifies a value relevant to the event. Note that the `onReady` event does not specify a `data` property.
 
 ## License
 
