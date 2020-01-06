@@ -1,33 +1,79 @@
-*Psst — looking for an app template? Go here --> [sveltejs/template](https://github.com/sveltejs/template)*
+# svelte-youtube
 
----
+Simple [Svelte](https://svelte.dev/) component acting as a thin layer over the [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference)
 
-# component-template
+## Features
 
-A base for building shareable Svelte components. Clone it with [degit](https://github.com/Rich-Harris/degit):
+- URL playback
+- [playback event bindings](https://developers.google.com/youtube/iframe_api_reference#Events)
+- [customizable player options](https://developers.google.com/youtube/player_parameters)
 
-```bash
-npx degit sveltejs/component-template my-new-component
-cd my-new-component
-npm install # or yarn
+## Installation
+
+```
+$ npm install svelte-youtube
 ```
 
-Your component's source code lives in `src/index.svelte`.
+## Usage
 
-TODO
+```js
+<script>
+  import YouTube from 'svelte-youtube';
+</script>
 
-* [ ] some firm opinions about the best way to test components
-* [ ] update `degit` so that it automates some of the setup work
+<YouTube
+  videoId={string}                  // defaults -> null
+  id={string}                       // defaults -> null
+  class={string}                    // defaults -> null
+  containerClass={string}           // defaults -> ''
+  options={obj}                     // defaults -> {}
+  on:ready={func}                   // defaults -> noop
+  on:play={func}                    // defaults -> noop
+  on:pause={func}                   // defaults -> noop
+  on:end={func}                     // defaults -> noop
+  on:error={func}                   // defaults -> noop
+  on:stateChange={func}             // defaults -> noop
+  on:playbackRateChange={func}      // defaults -> noop
+  on:playbackQualityChange={func}   // defaults -> noop
+/>
+```
 
+For convenience it is also possible to access the PlayerState constants through svelte-youtube:
+`YouTube.PlayerState` contains the values that are used by the [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference#onStateChange).
 
-## Setting up
+## Example
 
-* Run `npm init` (or `yarn init`)
-* Replace this README with your own
+```js
+<script>
+  import YouTube from 'svelte-youtube';
 
+  const options = {
+    height: '390',
+    width: '640',
+    //  see https://developers.google.com/youtube/player_parameters
+    playerVars: {
+      autoplay: 1
+    }
+  };
 
-## Consuming components
+  function onReady(event) {
+    // access to player in all event handlers via event.target
+    event.target.pauseVideo();
+  }
+</script>
 
-Your package.json has a `"svelte"` field pointing to `src/index.svelte`, which allows Svelte apps to import the source code directly, if they are using a bundler plugin like [rollup-plugin-svelte](https://github.com/sveltejs/rollup-plugin-svelte) or [svelte-loader](https://github.com/sveltejs/svelte-loader) (where [`resolve.mainFields`](https://webpack.js.org/configuration/resolve/#resolve-mainfields) in your webpack config includes `"svelte"`). **This is recommended.**
+<YouTube videoId="2g811Eo7K8U" {options} on:ready={onReady} />
+```
 
-For everyone else, `npm run build` will bundle your component's source code into a plain JavaScript module (`index.mjs`) and a UMD script (`index.js`). This will happen automatically when you publish your component to npm, courtesy of the `prepublishOnly` hook in package.json.
+## Controlling the player
+
+You can access & control the player in a way similar to the [official api](https://developers.google.com/youtube/iframe_api_reference#Events):
+
+> The ~~API~~ *component* will pass an event object as the sole argument to each of ~~those functions~~ *the event handler props*. The event object has the following properties:
+
+> * The event's `target` identifies the video player that corresponds to the event.
+> * The event's `data` specifies a value relevant to the event. Note that the `onReady` event does not specify a `data` property.
+
+## License
+
+MIT
