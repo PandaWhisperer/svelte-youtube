@@ -2,12 +2,21 @@
 	import YouTube from '../../src/index.svelte';
 
 	export let videoId;
+
+	function logEvent(name) {
+		return (event) => console.log(`Event received: ${name}`, event.detail);
+	}
 </script>
 
 <main>
 	<h1>Svelte-YouTube</h1>
 	<p>Embedding a single video:</p>
-	<YouTube {videoId} />
+	<YouTube {videoId}
+		on:ready={logEvent('ready')}
+		on:play={logEvent('play')}
+		on:pause={logEvent('pause')}
+		on:end={logEvent('end')}
+		/>
 </main>
 
 <style>
