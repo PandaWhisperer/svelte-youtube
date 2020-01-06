@@ -8,6 +8,7 @@ const name = pkg.name
 	.replace(/-\w/g, m => m[1].toUpperCase());
 
 export default {
+	external: Object.keys(pkg.dependencies),
 	input: 'src/index.svelte',
 	output: [
 		{ file: pkg.module, 'format': 'es' },
