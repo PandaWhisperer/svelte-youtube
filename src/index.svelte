@@ -19,9 +19,11 @@
   import { createEventDispatcher } from 'svelte';
   import YoutubePlayer from 'youtube-player';
 
-  export let id = undefined; // HTML element ID for player
-  export let videoId;        // Youtube video ID
+  export { className as class }; // HTML class names for container element (optional)
+  export let id = undefined; // HTML element ID for player (optional)
+  export let videoId;        // Youtube video ID (required)
 
+  let className;             // HTML class names for container element
   let playerElem;            // player DOM element reference
   let player;                // player API instance
 
@@ -130,6 +132,6 @@
   }
 </script>
 
-<div class="youtube-player">
+<div class={className}>
   <div id={id} bind:this={playerElem}></div>
 </div>
