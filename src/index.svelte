@@ -20,7 +20,7 @@
   import YoutubePlayer from 'youtube-player';
 
   export let id = undefined; // HTML element ID for player
-  export let url;            // Youtube video URL
+  export let videoId;        // Youtube video ID
 
   let playerElem;            // player DOM element reference
   let player;                // player API instance
@@ -29,7 +29,7 @@
   onMount(() => createPlayer());
 
   // Update videoId and load new video if URL changes
-  $: play(url);
+  $: play(videoId);
 
   function createPlayer() {
     player = YoutubePlayer(playerElem);
@@ -45,10 +45,8 @@
     return () => player.destroy();
   }
 
-  function play(url) {
-    if (player && url) {
-      const videoId = getYoutubeId(url);
-
+  function play(videoId) {
+    if (player && videoId) {
       player.loadVideoById(videoId);
     }
   }
@@ -68,7 +66,7 @@
     dispatch('ready', event);
 
     // Start playing
-    play(url);
+    play(videoId);
   }
 
   /**
@@ -102,7 +100,6 @@
         break;
 
       case PlayerState.PAUSED:
-        timer.clear();
         dispatch('pause', event);
         break;
 
