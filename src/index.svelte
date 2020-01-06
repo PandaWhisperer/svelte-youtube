@@ -38,7 +38,6 @@
     player.on('ready', onPlayerReady);
     player.on('error', onPlayerError);
     player.on('stateChange', onPlayerStateChange);
-    player.on('stateChange', onPlayerStateChange);
     player.on('playbackRateChange', onPlayerPlaybackRateChange);
     player.on('playbackQualityChange', onPlayerPlaybackQualityChange);
 
