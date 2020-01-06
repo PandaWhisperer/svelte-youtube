@@ -1,6 +1,6 @@
 # svelte-youtube
 
-Simple [Svelte](https://svelte.dev/) component acting as a thin layer over the [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference). Based on [react-youtube] (https://github.com/tjallingt/react-youtube).
+Simple [Svelte](https://svelte.dev/) component acting as a thin layer over the [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference). Based on [react-youtube](https://github.com/tjallingt/react-youtube).
 
 ## Features
 
