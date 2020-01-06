@@ -27,19 +27,41 @@ $ npm install svelte-youtube
   class={string}                    // defaults -> null
   containerClass={string}           // defaults -> ''
   options={obj}                     // defaults -> {}
-  on:ready={func}                   // defaults -> noop
-  on:play={func}                    // defaults -> noop
-  on:pause={func}                   // defaults -> noop
-  on:end={func}                     // defaults -> noop
-  on:error={func}                   // defaults -> noop
-  on:stateChange={func}             // defaults -> noop
-  on:playbackRateChange={func}      // defaults -> noop
-  on:playbackQualityChange={func}   // defaults -> noop
 />
 ```
 
-For convenience it is also possible to access the PlayerState constants through svelte-youtube:
-`YouTube.PlayerState` contains the values that are used by the [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference#onStateChange).
+## Events
+
+The following events are available:
+
+-  `on:ready`: Player has finished loading and is ready to play
+-  `on:play`: Playback has started
+-  `on:pause`: Playback has been paused
+-  `on:end`: Playback has ended
+-  `on:error`: An error has occurred (see below)
+-  `on:stateChange`: Player State has changed (see below)
+-  `on:playbackRateChange`: Playback rate has changed (see below)
+-  `on:playbackQualityChange`: Playback quality has changed (see below)
+
+Each event's `detail` property contains a `data` and a `target` property (except for the `ready` event, which does not have a `data` property). The `target` is a reference to the player instance, while the `data` contains information specific to the event.
+
+For details on the contents of the `data` property, and for a more detailed description of each event, refer to the [YouTube IFrame Player API Events](https://developers.google.com/youtube/iframe_api_reference#Events) .
+
+### Player State
+
+For convenience it is also possible to access the PlayerState constants through svelte-youtube.
+
+The `PlayerState` named export contains the values that are used by the [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference#onStateChange).
+
+### Player Errors
+
+2 – The request contains an invalid parameter value. For example, this error occurs if you specify a video ID that does not have 11 characters, or if the video ID contains invalid characters, such as exclamation points or asterisks.
+5 – The requested content cannot be played in an HTML5 player or another error related to the HTML5 player has occurred.
+100 – The video requested was not found. This error occurs when a video has been removed (for any reason) or has been marked as private.
+101 – The owner of the requested video does not allow it to be played in embedded players.
+150 – This error is the same as 101. It's just a 101 error in disguise!
+
+Refer to [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference#onError).
 
 ## Example
 
