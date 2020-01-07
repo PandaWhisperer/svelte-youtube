@@ -1,5 +1,5 @@
 {
-  "name": "SvelteYoutube",
+  "name": "svelte-youtube",
   "version": "0.0.1",
   "svelte": "src/index.svelte",
   "module": "index.mjs",
