@@ -2,6 +2,11 @@
   "name": "svelte-youtube",
   "version": "0.0.1",
   "svelte": "src/index.svelte",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PandaWhisperer/svelte-youtube"
+  },
+  "homepage": "https://github.com/PandaWhisperer/svelte-youtube#README",
   "module": "index.mjs",
   "main": "index.js",
   "scripts": {
