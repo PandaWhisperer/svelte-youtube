@@ -22,6 +22,7 @@
   export { className as class }; // HTML class names for container element (optional)
   export let id = undefined; // HTML element ID for player (optional)
   export let videoId;        // Youtube video ID (required)
+  export let options = undefined; // YouTube player options (optional)
 
   let className;             // HTML class names for container element
   let playerElem;            // player DOM element reference
@@ -34,7 +35,7 @@
   $: play(videoId);
 
   function createPlayer() {
-    player = YoutubePlayer(playerElem);
+    player = YoutubePlayer(playerElem, options);
 
     // Register event handlers
     player.on('ready', onPlayerReady);
@@ -48,8 +49,15 @@
   }
 
   function play(videoId) {
+    // this is needed because the loadVideoById function always starts playing,
+    // even if you have set autoplay to 1 whereas the cueVideoById function
+    // never starts autoplaying
     if (player && videoId) {
-      player.loadVideoById(videoId);
+      if (options && options.playerVars && options.playerVars.autoplay === 1) {
+        player.loadVideoById(videoId);
+      } else {
+        player.cueVideoById(videoId);
+      }
     }
   }
 
