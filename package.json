@@ -1,6 +1,6 @@
 {
   "name": "svelte-youtube",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "svelte": "src/index.svelte",
   "repository": {
     "type": "git",
