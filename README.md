@@ -26,6 +26,7 @@ $ npm install svelte-youtube
   id={string}                       // defaults -> null
   class={string}                    // defaults -> null
   options={obj}                     // defaults -> {}
+  responsive={bool}                 // defaults -> false
 />
 ```
 
