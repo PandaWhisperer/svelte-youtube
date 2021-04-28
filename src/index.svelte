@@ -142,7 +142,10 @@
 </script>
 
 <div class={(className ? className : "") + (responsive ? " responsive-container" : "")}>
-  <div id={id} class={responsive ? "responsive-player" : ""} bind:this={playerElem}></div>
+  <div id={id} bind:this={playerElem}
+    class={responsive ? "responsive-player" : ""} 
+  >
+  </div>
 </div>
 
 <style>
