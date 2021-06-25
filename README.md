@@ -8,6 +8,10 @@ Simple [Svelte](https://svelte.dev/) component acting as a thin layer over the [
 - [playback event bindings](https://developers.google.com/youtube/iframe_api_reference#Events)
 - [customizable player options](https://developers.google.com/youtube/player_parameters)
 
+## NOTICE
+
+I currently don't have the time to maintain this package, as I am not actively working on any Svelte app. If you are interested in maintaining the NPM package going forward, please send me an email.
+
 ## Installation
 
 ```
