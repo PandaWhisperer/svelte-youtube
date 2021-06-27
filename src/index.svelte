@@ -23,6 +23,7 @@
   export let id = undefined; // HTML element ID for player (optional)
   export let videoId;        // Youtube video ID (required)
   export let options = undefined; // YouTube player options (optional)
+  export let responsive = false;
 
   let className;             // HTML class names for container element
   let playerElem;            // player DOM element reference
@@ -140,6 +141,25 @@
   }
 </script>
 
-<div class={className}>
-  <div id={id} bind:this={playerElem}></div>
+<div class={(className ? className : "") + (responsive ? " responsive-container" : "")}>
+  <div id={id} bind:this={playerElem}
+    class={responsive ? "responsive-player" : ""} 
+  >
+  </div>
 </div>
+
+<style>
+  .responsive-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+  .responsive-player, #resp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
