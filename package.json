@@ -17,13 +17,13 @@
     "youtube-player": "^5.5.2"
   },
   "devDependencies": {
-    "rollup": "^1.11.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-svelte": "^5.0.0",
-    "svelte": "^3.0.0"
+    "rollup": "^4.9.5",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "7.1.6",
+    "svelte": "4.2.9"
   },
   "peerDependencies": {
-    "svelte": "^3.0.0"
+    "svelte": "4.2.9"
   },
   "keywords": [
     "svelte",
